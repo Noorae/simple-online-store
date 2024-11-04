@@ -35,3 +35,19 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### ExJs ###
+storeclient/.architect
+storeclient/bootstrap.css
+storeclient/bootstrap.js
+storeclient/bootstrap.json
+storeclient/bootstrap.jsonp
+storeclient/build/
+storeclient/classic.json
+storeclient/classic.jsonp
+storeclient/ext/
+storeclient/modern.json
+storeclient/modern.jsonp
+storeclient/resources/sass/.sass-cache/
+storeclient/resources/.arch-internal-preview.css
+storeclient/.arch-internal-preview.css
