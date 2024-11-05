@@ -80,7 +80,7 @@ Ext.define("storeClient.view.main.Main", {
     items: [
         {
             title: "Search",
-            // The following grid shares a store with the classic version's grid as well!
+
             items: [
                 {
                     xtype: "textfield",
@@ -142,6 +142,9 @@ Ext.define("storeClient.view.main.Main", {
                     xtype: "productgrid",
                     flex: 1,
                     width: "100%",
+                    listeners: {
+                        activate: "onProductsTabActivate",
+                    },
                 },
             ],
         },
