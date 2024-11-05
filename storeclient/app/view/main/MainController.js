@@ -30,6 +30,15 @@ Ext.define("storeClient.view.main.MainController", {
         });
     },
 
+    onProductsTabActivate: function (tab) {
+        const productGrid = tab.down("productgrid");
+        const store = productGrid.getStore();
+
+        if (!store.isLoaded()) {
+            store.load();
+        }
+    },
+
     //search products
     onSearchProduct: function () {
         const gtin = this.lookupReference("gtinSearchField").getValue();
