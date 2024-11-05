@@ -1,22 +1,35 @@
 package store.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+
 @Data
 @AllArgsConstructor
 @Entity
 public class User {
+
     @Id
     @GeneratedValue
-    private Long id;
+    @Column(name = "user_id")
+    private Long userId;
+
+    @Column(name = "email")
     private String email;
-    private String first_name;
-    private String last_name;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "password")
     private String password;
+
 
     public User() {
 
@@ -24,8 +37,8 @@ public class User {
 
     public User(String email, String first_name, String last_name, String password) {
         setEmail(email);
-        setFirst_name(first_name);
-        setLast_name(last_name);
+        setFirstName(first_name);
+        setLastName(last_name);
         setPassword(password);
     }
 }
