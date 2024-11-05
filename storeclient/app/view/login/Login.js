@@ -16,8 +16,8 @@ Ext.define("storeClient.view.login.Login", {
         items: [
             {
                 xtype: "textfield",
-                name: "username",
-                fieldLabel: "Username",
+                name: "email",
+                fieldLabel: "email",
                 allowBlank: false,
             },
             {
