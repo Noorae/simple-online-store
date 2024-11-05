@@ -80,34 +80,30 @@ Ext.define("storeClient.view.main.Main", {
     items: [
         {
             title: "Home",
-            iconCls: "fa-home",
             // The following grid shares a store with the classic version's grid as well!
             items: [
                 {
-                    xtype: "mainlist",
+                    xtype: "searchfield",
+                    width: "100%",
+                    margin: "10 0",
+                },
+                {
+                    xtype: "container",
+                    reference: "productDisplay",
+                    padding: 10,
+                    html: "Enter a search term to find a product",
                 },
             ],
         },
         {
-            title: "Users",
-            iconCls: "fa-user",
-            bind: {
-                html: "{loremIpsum}",
-            },
-        },
-        {
-            title: "Groups",
-            iconCls: "fa-users",
-            bind: {
-                html: "{loremIpsum}",
-            },
-        },
-        {
-            title: "Settings",
-            iconCls: "fa-cog",
-            bind: {
-                html: "{loremIpsum}",
-            },
+            title: "Products",
+            items: [
+                {
+                    xtype: "productgrid",
+                    flex: 1,
+                    width: "100%",
+                },
+            ],
         },
     ],
 });

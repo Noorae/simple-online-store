@@ -29,4 +29,34 @@ Ext.define("storeClient.view.main.MainController", {
             xtype: "login",
         });
     },
+
+    //search products
+    onSearchProduct: function (field, newValue) {
+        if (newValue.length > 2) {
+            Ext.Ajax.request({
+                url: "", //TODO add api endpoint url
+                method: "GET",
+                params: {
+                    query: newValue,
+                },
+                success: function (response) {
+                    const productData = Ext.decode(response.responseText);
+                    this.updateProductDisplay(productData);
+                },
+                failure: function () {
+                    Ext.Msg.alert("Error", "Product search failed.");
+                },
+                scope: this,
+            });
+        }
+    },
+
+    updateProductDisplay: function (productData) {
+        const productDisplay = this.lookupReference("productDisplay");
+        productDisplay.setHtml(
+            `<h3>${productData.name}</h3>
+             <p>Weight: ${productData.weight}</p>
+             <img src="${productData.imageUrl}" width="100" height="100"/>`
+        );
+    },
 });
