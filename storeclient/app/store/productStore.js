@@ -1,12 +1,15 @@
 Ext.define("storeClient.store.ProductStore", {
     extend: "Ext.data.Store",
     alias: "store.product",
+    model: "storeClient.model.Product",
 
-    fields: ["name", "price", "quantity"],
-
-    data: [
-        { name: "Chocolate Bar", price: 2.5, quantity: 50 },
-        { name: "Gummy Bears", price: 1.5, quantity: 100 },
-        { name: "Lollipop", price: 0.5, quantity: 200 },
-    ],
+    proxy: {
+        type: "ajax",
+        url: "http://localhost:8080/api/products",
+        reader: {
+            type: "json",
+            rootProperty: "",
+        },
+    },
+    autoLoad: true, // Disable auto-loading
 });
