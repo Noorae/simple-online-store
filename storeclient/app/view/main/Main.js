@@ -79,19 +79,59 @@ Ext.define("storeClient.view.main.Main", {
 
     items: [
         {
-            title: "Home",
+            title: "Search",
             // The following grid shares a store with the classic version's grid as well!
             items: [
                 {
-                    xtype: "searchfield",
-                    width: "100%",
+                    xtype: "textfield",
+                    reference: "gtinSearchField",
+                    fieldLabel: "Search with GTIN code",
+                    width: "80%",
                     margin: "10 0",
                 },
                 {
-                    xtype: "container",
-                    reference: "productDisplay",
-                    padding: 10,
-                    html: "Enter a search term to find a product",
+                    xtype: "button",
+                    text: "Search",
+                    handler: "onSearchProduct",
+                },
+                {
+                    xtype: "panel",
+                    reference: "productDisplayPanel",
+                    hidden: true,
+                    items: [
+                        {
+                            xtype: "displayfield",
+                            fieldLabel: "Name",
+                            bind: "{productName}",
+                        },
+                        {
+                            xtype: "displayfield",
+                            fieldLabel: "Description",
+                            bind: "{productDescription}",
+                        },
+                        {
+                            xtype: "displayfield",
+                            fieldLabel: "Weight",
+                            bind: "{productWeight}",
+                        },
+                        {
+                            xtype: "displayfield",
+                            fieldLabel: "Calories",
+                            bind: "{productKcal}",
+                        },
+                        {
+                            xtype: "image",
+                            bind: { src: "{productImage}" },
+                            width: 200,
+                            height: "auto",
+                            alt: "Product Image",
+                            style: {
+                                maxWidth: "400px", // Maximum width or height to control size within layout
+                                maxHeight: "400px",
+                                objectFit: "contain", // This maintains the aspect ratio without stretching
+                            },
+                        },
+                    ],
                 },
             ],
         },
