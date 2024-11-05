@@ -5,7 +5,7 @@ Ext.define("storeClient.view.main.SearchField", {
     emptyText: "Search Products...",
     listeners: {
         change: function (field, newValue) {
-            const store = Ext.getStore("product"); // Assuming your CandyStore is aliased as 'candy'
+            const store = Ext.getStore("product");
             store.filter("name", newValue);
         },
     },
