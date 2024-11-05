@@ -1,4 +1,4 @@
-Ext.define("storeClient.view.main.CandyGrid", {
+Ext.define("storeClient.view.main.ProductGrid", {
     extend: "Ext.grid.Panel",
     xtype: "productgrid",
 
