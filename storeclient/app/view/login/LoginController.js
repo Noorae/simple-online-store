@@ -3,17 +3,38 @@ Ext.define("storeClient.view.login.LoginController", {
     alias: "controller.login",
 
     onLoginClick: function () {
-        //TODO verify user credentials here
+        const form = this.lookupReference("form");
 
-        // Set the localStorage value to true
-        localStorage.setItem("TutorialLoggedIn", true);
+        if (form.isValid()) {
+            const formData = form.getValues();
 
-        // Remove Login Window
-        this.getView().destroy();
+            Ext.Ajax.request({
+                url: "http://localhost:8080/api/users/login",
+                method: "POST",
+                jsonData: formData,
 
-        // Add the main view to the viewport
-        Ext.create({
-            xtype: "app-main",
-        });
+                success: (response) => {
+                    const responseMessage = response.responseText.trim();
+
+                    if (responseMessage === "Login was successful!") {
+                        localStorage.setItem("TutorialLoggedIn", true);
+                        this.getView().destroy();
+
+                        Ext.create({
+                            xtype: "app-main",
+                        });
+                    } else {
+                        Ext.Msg.alert(
+                            "Login Failed",
+                            responseMessage || "Invalid email or password."
+                        );
+                    }
+                },
+
+                failure: () => {
+                    Ext.Msg.alert("Error", "Login failed. Please try again.");
+                },
+            });
+        }
     },
 });

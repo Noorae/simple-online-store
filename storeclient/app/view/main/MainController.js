@@ -30,33 +30,45 @@ Ext.define("storeClient.view.main.MainController", {
         });
     },
 
-    //search products
-    onSearchProduct: function (field, newValue) {
-        if (newValue.length > 2) {
-            Ext.Ajax.request({
-                url: "", //TODO add api endpoint url
-                method: "GET",
-                params: {
-                    query: newValue,
-                },
-                success: function (response) {
-                    const productData = Ext.decode(response.responseText);
-                    this.updateProductDisplay(productData);
-                },
-                failure: function () {
-                    Ext.Msg.alert("Error", "Product search failed.");
-                },
-                scope: this,
-            });
+    onProductsTabActivate: function (tab) {
+        const productGrid = tab.down("productgrid");
+        const store = productGrid.getStore();
+
+        if (!store.isLoaded()) {
+            store.load();
         }
     },
 
-    updateProductDisplay: function (productData) {
-        const productDisplay = this.lookupReference("productDisplay");
-        productDisplay.setHtml(
-            `<h3>${productData.name}</h3>
-             <p>Weight: ${productData.weight}</p>
-             <img src="${productData.imageUrl}" width="100" height="100"/>`
-        );
+    //search products
+    onSearchProduct: function () {
+        const gtin = this.lookupReference("gtinSearchField").getValue();
+        const productPanel = this.lookupReference("productDisplayPanel");
+
+        if (!gtin) {
+            Ext.Msg.alert("Error", "Please enter a GTIN code.");
+            return;
+        }
+
+        Ext.Ajax.request({
+            url: `http://localhost:8080/api/products/gtin/${gtin}`,
+            method: "GET",
+            success: (response) => {
+                const product = Ext.decode(response.responseText);
+
+                this.getViewModel().set({
+                    productName: product.productName,
+                    productDescription: product.productDescription,
+                    productWeight: product.product_weight + " g",
+                    productKcal: product.productKcal,
+                    productImage: product.productImage,
+                });
+
+                productPanel.setHidden(false);
+            },
+            failure: () => {
+                Ext.Msg.alert("Error", "Product not found or server error.");
+                productPanel.setHidden(true);
+            },
+        });
     },
 });

@@ -13,9 +13,7 @@
      *          "charts"
      *      ]
      */
-    "requires": [
-        "font-awesome"
-    ],
+    "requires": ["font-awesome"],
 
     /**
      * The relative path to the application's markup file (html, jsp, asp, etc.).
@@ -28,10 +26,7 @@
      * to "Ext.require". The "app.dir" variable below is expanded to the path where the
      * application resides (the same folder in which this file is located).
      */
-    "classpath": [
-        "app",
-        "${toolkit.name}/src"
-    ],
+    "classpath": ["app", "${toolkit.name}/src"],
 
     /**
      * Comma-separated string with the paths of directories or files to search. Any classes
@@ -40,10 +35,7 @@
      * that override will in fact only be included in the build if the target class specified
      * in the "override" property is also included.
      */
-    "overrides": [
-        "overrides",
-        "${toolkit.name}/overrides"
-    ],
+    "overrides": ["overrides", "${toolkit.name}/overrides"],
 
     /**
      * Fashion build configuration properties.
@@ -79,7 +71,7 @@
          *         // The file used to save sass variables edited via Sencha Inspector and Sencha Themer.
          *         // This file will automatically be applied to the end of the scss build.
          *         "var": "sass/save.scss",
-         *      
+         *
          *         // The directory used to save generated sass sources.
          *         // This directory will automatically be applied to the end of the scss build.
          *         "src": "sass/save"
@@ -106,10 +98,7 @@
          *      | application     |
          *      +-----------------+
          */
-        "etc": [
-            "sass/etc/all.scss",
-            "${toolkit.name}/sass/etc/all.scss"
-        ],
+        "etc": ["sass/etc/all.scss", "${toolkit.name}/sass/etc/all.scss"],
 
         /**
          * Comma-separated list of folders containing Sass variable definitions
@@ -154,10 +143,7 @@
          *      | application     |
          *      +-----------------+
          */
-        "src": [
-            "sass/src",
-            "${toolkit.name}/sass/src"
-        ]
+        "src": ["sass/src", "${toolkit.name}/sass/src"]
     },
 
     /**
@@ -273,21 +259,21 @@
      * are supported.
      *
      */
-     "loader": {
-         // This property controls how the loader manages caching for requests:
-         //
-         //   - true: allows requests to receive cached responses
-         //   - false: disable cached responses by adding a random "cache buster"
-         //   - other: a string (such as the build.timestamp shown here) to allow
-         //     requests to be cached for this build.
-         //
-         "cache": false,
+    "loader": {
+        // This property controls how the loader manages caching for requests:
+        //
+        //   - true: allows requests to receive cached responses
+        //   - false: disable cached responses by adding a random "cache buster"
+        //   - other: a string (such as the build.timestamp shown here) to allow
+        //     requests to be cached for this build.
+        //
+        "cache": false,
 
-         // When "cache" is not true, this value is the request parameter used
-         // to control caching.
-         //
-         "cacheParam": "_dc"
-     },
+        // When "cache" is not true, this value is the request parameter used
+        // to control caching.
+        //
+        "cacheParam": "_dc"
+    },
 
     /**
      * Settings specific to production builds.
@@ -313,8 +299,7 @@
     /**
      * Settings specific to testing builds.
      */
-    "testing": {
-    },
+    "testing": {},
 
     /**
      * Settings specific to development builds.
@@ -378,7 +363,7 @@
      *          "css": "${app.output.resources}/${app.name}-all.css",
      *          "js": {
      *              "path": "app.js",
-     *              // This setting constrols the output language level.  Set to 'ES6' to 
+     *              // This setting constrols the output language level.  Set to 'ES6' to
      *              // disable the transpiler
      *              "version": "ES5"
      *          },
@@ -422,20 +407,20 @@
     },
 
     /**
-    * Controls for localStorage caching
-    *   "cache": {
-    *       // This property controls whether localStorage caching of this manifest file is on or off.
-    *       // if disabled no deltas will be generated during a build and full updates will be disabled
-    *       "enable": false,
-    *
-    *       // This property allows for global toggle of deltas.
-    *       // If set to a string the value will be used as the path to where deltas will be generated relative to you build.
-    *       // If set to a Truthy Value the default path ok "deltas" will be used
-    *       // If set to a Falsey value or if this property is not present deltas will be disabled and not generated.
-    *
-    *       "deltas": "deltas"
-    *   }
-    */
+     * Controls for localStorage caching
+     *   "cache": {
+     *       // This property controls whether localStorage caching of this manifest file is on or off.
+     *       // if disabled no deltas will be generated during a build and full updates will be disabled
+     *       "enable": false,
+     *
+     *       // This property allows for global toggle of deltas.
+     *       // If set to a string the value will be used as the path to where deltas will be generated relative to you build.
+     *       // If set to a Truthy Value the default path ok "deltas" will be used
+     *       // If set to a Falsey value or if this property is not present deltas will be disabled and not generated.
+     *
+     *       "deltas": "deltas"
+     *   }
+     */
 
     "cache": {
         "enable": false,
@@ -450,15 +435,11 @@
         /**
          * List of items in the CACHE MANIFEST section
          */
-        "cache": [
-            "index.html"
-        ],
+        "cache": ["index.html"],
         /**
          * List of items in the NETWORK section
          */
-        "network": [
-            "*"
-        ],
+        "network": ["*"],
         /**
          * List of items in the FALLBACK section
          */
@@ -524,7 +505,7 @@
         },
 
         "modern": {
-            "toolkit": "modern",
+            "toolkit": "classic",
             "theme": "theme-material",
             "sass": {
                 "generated": {
@@ -539,9 +520,7 @@
      * File / directory name patttern to ignore when copying to the builds. Must be a
      * valid regular expression.
      */
-    "ignore": [
-        "(^|/)CVS(/?$|/.*?$)"
-    ],
+    "ignore": ["(^|/)CVS(/?$|/.*?$)"],
 
     /**
      * Uniquely generated id for this application, used as prefix for localStorage keys.
