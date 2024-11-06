@@ -8,7 +8,6 @@ Ext.define("storeClient.view.main.Main", {
 
         "storeClient.view.main.MainController",
         "storeClient.view.main.MainModel",
-        "storeClient.view.main.List",
     ],
 
     controller: "main",
