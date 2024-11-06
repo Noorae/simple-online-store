@@ -50,7 +50,7 @@ Ext.define("storeClient.view.main.MainController", {
         }
 
         Ext.Ajax.request({
-            url: `http://localhost:8080/api/products/gtin/${gtin}`,
+            url: `https://simple-online-store-demo.onrender.com/api/products/gtin/${gtin}`,
             method: "GET",
             success: (response) => {
                 const product = Ext.decode(response.responseText);
