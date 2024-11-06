@@ -9,7 +9,7 @@ Ext.define("storeClient.view.login.LoginController", {
             const formData = form.getValues();
 
             Ext.Ajax.request({
-                url: "http://localhost:8080/api/users/login",
+                url: "https://simple-online-store-demo.onrender.com/api/users/login",
                 method: "POST",
                 jsonData: formData,
 

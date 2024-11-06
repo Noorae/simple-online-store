@@ -5,7 +5,7 @@ Ext.define("storeClient.store.ProductStore", {
 
     proxy: {
         type: "ajax",
-        url: "http://localhost:8080/api/products",
+        url: "https://simple-online-store-demo.onrender.com/api/products",
         reader: {
             type: "json",
             rootProperty: "",
